@@ -73,7 +73,7 @@ model Document {
     user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId      String
     hidden      Boolean     @default(true)
-    title       String
+    title       String      @default("Untitled Document")
     description String?
     components  Component[]
 }
