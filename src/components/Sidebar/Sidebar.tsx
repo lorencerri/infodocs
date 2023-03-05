@@ -25,7 +25,7 @@ export const Sidebar = () => {
             </li>
           );
         })}
-        <div className="divider m-0" />
+        {(documents?.length || 0) > 0 && <div className="divider my-1" />}
         <li>
           <a
             className="font-bold"
