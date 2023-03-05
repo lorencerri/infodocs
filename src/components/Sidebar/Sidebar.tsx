@@ -1,7 +1,16 @@
 import { useSession } from "next-auth/react";
 import { api } from "~/utils/api";
+import type { RouterOutputs } from "~/utils/api";
 
-export const Sidebar = () => {
+type DocumentType = RouterOutputs["document"]["getAll"][0] | null;
+
+export const Sidebar = ({
+  selectedDocument,
+  setSelectedDocument,
+}: {
+  selectedDocument: DocumentType;
+  setSelectedDocument: React.Dispatch<React.SetStateAction<DocumentType>>;
+}) => {
   const { data: sessionData } = useSession();
 
   const { data: documents, refetch: refetchDocuments } =
@@ -16,12 +25,25 @@ export const Sidebar = () => {
   });
 
   return (
-    <div className="menu  min-h-[25vh] basis-1/4 rounded-lg bg-base-200 p-5 text-center">
+    <div className="menu min-h-[25vh] basis-1/4 rounded-lg bg-base-200 p-5 text-center">
       <ul>
-        {documents?.map((document) => {
+        {documents?.map((doc) => {
+          console.log(selectedDocument?.id === doc.id);
           return (
-            <li key={document.id}>
-              <a>{document.title}</a>
+            <li
+              key={doc.id}
+              className={
+                selectedDocument?.id === doc.id ? "rounded-lg bg-base-100" : ""
+              }
+            >
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedDocument(doc);
+                }}
+              >
+                {doc.title}
+              </a>
             </li>
           );
         })}
