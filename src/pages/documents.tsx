@@ -3,6 +3,7 @@ import { type NextPage } from "next";
 import { Header } from "~/components/Header/Header";
 import { Sidebar } from "~/components/Sidebar/Sidebar";
 import type { RouterOutputs } from "~/utils/api";
+import { DocumentHeader } from "~/components/Document/DocumentHeader";
 
 type DocumentType = RouterOutputs["document"]["getAll"][0];
 
@@ -22,8 +23,8 @@ const Documents: NextPage = () => {
             selectedDocument={selectedDocument}
             setSelectedDocument={setSelectedDocument}
           />
-          <div className="hero min-h-[53vh]  rounded-lg bg-base-200">
-            Content
+          <div className="hero mt-0 flex flex-col">
+            <DocumentHeader selectedDocument={selectedDocument} />
           </div>
         </div>
       </div>
