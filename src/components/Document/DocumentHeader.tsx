@@ -58,7 +58,7 @@ export const DocumentHeader = () => {
               id: selectedDocument.id,
               hidden: selectedDocument.hidden,
               title: selectedDocument.title,
-              description: selectedDocument.title,
+              description: selectedDocument.description || "",
             });
             setEdited(false);
           }}
