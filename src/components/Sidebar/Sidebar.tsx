@@ -32,11 +32,14 @@ export const Sidebar = () => {
                 className="bg-inherit font-bold hover:cursor-pointer hover:bg-base-300"
                 colSpan={2}
                 onClick={() => {
-                  createDocument.mutate({
-                    hidden: false,
-                    title: "Untitled Document",
-                    description: "...",
-                  });
+                  void (async () => {
+                    const document = await createDocument.mutateAsync({
+                      hidden: false,
+                      title: "Untitled Document",
+                      description: "...",
+                    });
+                    setSelectedDocument(document);
+                  })();
                 }}
               >
                 + Create New Document
