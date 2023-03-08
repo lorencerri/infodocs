@@ -1,11 +1,7 @@
-import { useSession } from "next-auth/react";
-import { api, type RouterOutputs } from "~/utils/api";
+import { api } from "~/utils/api";
 import { NoDocumentSelected } from "./NoDocumentSelected";
-import { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { documentsAtom, selectedDocumentAtom } from "~/atoms";
-
-type DocumentType = RouterOutputs["document"]["getAll"][0] | null;
 
 export const DocumentHeader = () => {
   const [selectedDocument] = useAtom(selectedDocumentAtom);
