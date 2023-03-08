@@ -26,6 +26,9 @@ export const documentRouter = createTRPCRouter({
       where: {
         userId: ctx.session.user.id,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
   }),
 
