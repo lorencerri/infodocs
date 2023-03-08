@@ -1,27 +1,16 @@
-import { useSession } from "next-auth/react";
 import { api } from "~/utils/api";
-import type { RouterOutputs } from "~/utils/api";
 import { DocumentRowItem } from "./DocumentRowItem";
+import { useAtom } from "jotai";
+import { documentsAtom, selectedDocumentAtom } from "~/atoms";
 
-type DocumentType = RouterOutputs["document"]["getAll"][0] | null;
-
-export const Sidebar = ({
-  selectedDocument,
-  setSelectedDocument,
-}: {
-  selectedDocument: DocumentType;
-  setSelectedDocument: React.Dispatch<React.SetStateAction<DocumentType>>;
-}) => {
-  const { data: sessionData } = useSession();
-
-  const { data: documents, refetch: refetchDocuments } =
-    api.document.getOwn.useQuery(undefined, {
-      enabled: sessionData?.user !== undefined,
-    });
+export const Sidebar = () => {
+  const [_documents] = useAtom(documentsAtom);
+  const [selectedDocument, setSelectedDocument] = useAtom(selectedDocumentAtom);
+  const { documents } = _documents;
 
   const createDocument = api.document.create.useMutation({
     onSuccess: () => {
-      void refetchDocuments();
+      if (_documents.refetch) void _documents.refetch();
     },
   });
 
@@ -32,9 +21,9 @@ export const Sidebar = ({
           <tbody>
             {documents?.map((doc) => (
               <DocumentRowItem
-                key={doc.id}
+                key={doc?.id}
                 item={doc}
-                selected={doc.id === selectedDocument?.id}
+                selected={doc?.id === selectedDocument?.id}
                 setSelectedDocument={setSelectedDocument}
               />
             ))}

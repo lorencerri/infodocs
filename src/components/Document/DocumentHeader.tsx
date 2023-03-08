@@ -2,22 +2,15 @@ import { useSession } from "next-auth/react";
 import { api, type RouterOutputs } from "~/utils/api";
 import { NoDocumentSelected } from "./NoDocumentSelected";
 import { useState, useEffect } from "react";
+import { useAtom } from "jotai";
+import { documentsAtom, selectedDocumentAtom } from "~/atoms";
 
 type DocumentType = RouterOutputs["document"]["getAll"][0] | null;
 
-export const DocumentHeader = ({
-  selectedDocument,
-}: {
-  selectedDocument: DocumentType;
-}) => {
-  const { data: sessionData } = useSession();
-  const [title, setTitle] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-
-  useEffect(() => {
-    setTitle(selectedDocument?.title || "");
-    setDescription(selectedDocument?.description || "");
-  }, [selectedDocument]);
+export const DocumentHeader = () => {
+  const [selectedDocument] = useAtom(selectedDocumentAtom);
+  const [_documents, setDocuments] = useAtom(documentsAtom);
+  const { documents } = _documents;
 
   const editDocument = api.document.update.useMutation();
   if (!selectedDocument) return <NoDocumentSelected />;
@@ -28,28 +21,46 @@ export const DocumentHeader = ({
           type="text"
           placeholder="Title"
           className="input input-md w-full max-w-xs"
-          defaultValue={selectedDocument?.title || ""}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={selectedDocument.title}
+          onChange={(e) => {
+            const document = documents.find(
+              (doc) => doc?.id === selectedDocument.id
+            );
+            if (!document) return;
+            document.title = e.target.value;
+
+            setDocuments({ documents, refetch: _documents.refetch });
+          }}
         />
         <input
           type="text"
           placeholder="Description"
           className="input input-md w-full min-w-[45vw] max-w-xs"
-          defaultValue={selectedDocument?.description || ""}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={selectedDocument.description || ""}
+          onChange={(e) => {
+            const document = documents.find(
+              (doc) => doc?.id === selectedDocument.id
+            );
+            if (!document) return;
+            document.description = e.target.value;
+
+            setDocuments({ documents, refetch: _documents.refetch });
+          }}
         />
         <a
           type="text"
           placeholder="Type here"
           className="btn btn-success"
           onClick={() => {
+            const document = documents.find(
+              (doc) => doc?.id === selectedDocument.id
+            );
+            if (!document) return;
             editDocument.mutate({
-              id: selectedDocument.id,
-              hidden: selectedDocument.hidden,
-              title,
-              description,
+              id: document.id,
+              hidden: document.hidden,
+              title: document.title,
+              description: document.title,
             });
           }}
         >
