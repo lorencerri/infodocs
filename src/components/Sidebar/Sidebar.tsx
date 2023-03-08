@@ -39,7 +39,7 @@ export const Sidebar = () => {
                   });
                 }}
               >
-                Create New Document
+                + Create New Document
               </td>
             </tr>
           </tbody>
