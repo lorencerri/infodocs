@@ -15,7 +15,7 @@ export const DocumentHeader = () => {
   if (!selectedDocument) return <NoDocumentSelected />;
   return (
     <div className="navbar min-h-16 mb-5 rounded-lg bg-base-200">
-      <div className="w-full flex-1 gap-2">
+      <div className="w-full flex-1 flex-col gap-2 md:flex-row">
         <input
           type="text"
           placeholder="Title"
@@ -49,40 +49,42 @@ export const DocumentHeader = () => {
             setDocuments({ documents, refetch: _documents.refetch });
           }}
         />
-        <a
-          type="text"
-          placeholder="Type here"
-          className={`btn ${edited ? "btn-success" : "btn-disabled"}`}
-          onClick={() => {
-            editDocument.mutate({
-              id: selectedDocument.id,
-              hidden: selectedDocument.hidden,
-              title: selectedDocument.title,
-              description: selectedDocument.description || "",
-            });
-            setEdited(false);
-          }}
-        >
-          Save
-        </a>
-        <a
-          type="text"
-          placeholder="Type here"
-          className={`btn btn-error`}
-          onClick={() => {
-            const index = documents.findIndex(
-              (d) => d?.id === selectedDocument.id
-            );
-            if (index !== undefined) {
-              delete documents[index];
-              setDocuments({ documents, refetch: _documents.refetch });
-            }
-            setSelectedDocument(null);
-            deleteDocument.mutate({ id: selectedDocument.id });
-          }}
-        >
-          Delete
-        </a>
+        <div className="flex gap-2">
+          <a
+            type="text"
+            placeholder="Type here"
+            className={`btn ${edited ? "btn-success" : "btn-disabled"}`}
+            onClick={() => {
+              editDocument.mutate({
+                id: selectedDocument.id,
+                hidden: selectedDocument.hidden,
+                title: selectedDocument.title,
+                description: selectedDocument.description || "",
+              });
+              setEdited(false);
+            }}
+          >
+            Save
+          </a>
+          <a
+            type="text"
+            placeholder="Type here"
+            className={`btn btn-error`}
+            onClick={() => {
+              const index = documents.findIndex(
+                (d) => d?.id === selectedDocument.id
+              );
+              if (index !== undefined) {
+                delete documents[index];
+                setDocuments({ documents, refetch: _documents.refetch });
+              }
+              setSelectedDocument(null);
+              deleteDocument.mutate({ id: selectedDocument.id });
+            }}
+          >
+            Delete
+          </a>
+        </div>
       </div>
       <div className="flex-none"></div>
     </div>
