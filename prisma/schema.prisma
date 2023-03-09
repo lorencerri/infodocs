@@ -85,7 +85,8 @@ model Component {
     document   Document      @relation(fields: [documentId], references: [id], onDelete: Cascade)
     documentId Int
     type       ComponentType
-    data       Json
+    header     String?
+    content    String?
 }
 
 enum ComponentType {

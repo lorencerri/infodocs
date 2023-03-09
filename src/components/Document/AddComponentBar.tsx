@@ -35,10 +35,8 @@ export const AddComponentBar = () => {
               createComponent.mutate({
                 type: selected,
                 documentId: selectedDocument.id,
-                data: {
-                  title: "New Component",
-                  text: "Description",
-                },
+                header: "Demo Component",
+                content: "Demo Content",
               });
             }
           }}

@@ -3,6 +3,7 @@ import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { ComponentType } from "@prisma/client";
 
+// TODO: Add user same-user authentication
 export const componentRouter = createTRPCRouter({
   get: publicProcedure
     .input(
@@ -33,13 +34,8 @@ export const componentRouter = createTRPCRouter({
       z.object({
         documentId: z.number(),
         type: z.nativeEnum(ComponentType),
-        data: z.union([
-          z.object({ title: z.string(), text: z.string() }),
-          z.object({
-            title: z.string(),
-            video: z.string(),
-          }),
-        ]),
+        header: z.string(),
+        content: z.string(),
       })
     )
     .mutation(({ ctx, input }) => {
@@ -47,7 +43,8 @@ export const componentRouter = createTRPCRouter({
         data: {
           documentId: input.documentId,
           type: input.type,
-          data: input.data,
+          header: input.header,
+          content: input.content,
         },
       });
     }),
@@ -57,13 +54,8 @@ export const componentRouter = createTRPCRouter({
       z.object({
         id: z.string(),
         type: z.nativeEnum(ComponentType),
-        data: z.union([
-          z.object({ title: z.string(), text: z.string() }),
-          z.object({
-            title: z.string(),
-            video: z.string(),
-          }),
-        ]),
+        header: z.string(),
+        content: z.string(),
       })
     )
     .mutation(({ ctx, input }) => {
@@ -73,7 +65,8 @@ export const componentRouter = createTRPCRouter({
         },
         data: {
           type: input.type,
-          data: input.data,
+          header: input.header,
+          content: input.content,
         },
       });
     }),
