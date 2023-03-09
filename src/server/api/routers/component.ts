@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { ComponentType } from "@prisma/client";
 
-export const componentRoute = createTRPCRouter({
+export const componentRouter = createTRPCRouter({
   get: publicProcedure
     .input(
       z.object({
