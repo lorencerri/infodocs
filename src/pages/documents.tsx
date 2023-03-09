@@ -7,6 +7,7 @@ import { DocumentHeader } from "~/components/Document/DocumentHeader";
 import { useAtom } from "jotai";
 import { documentsAtom } from "~/atoms";
 import { useSession } from "next-auth/react";
+import { AddComponentBar } from "~/components/Document/AddComponentBar";
 
 const Documents: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -28,6 +29,7 @@ const Documents: NextPage = () => {
           <Sidebar />
           <div className="hero mt-0 flex flex-col">
             <DocumentHeader />
+            <AddComponentBar />
           </div>
         </div>
       </div>
