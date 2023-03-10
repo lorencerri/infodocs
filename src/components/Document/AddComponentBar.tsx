@@ -12,10 +12,10 @@ export const AddComponentBar = () => {
 
   if (!selectedDocument) return null;
   return (
-    <div className="hero min-h-16 mb-5 rounded-lg bg-base-200 text-center">
+    <div className="hero min-h-8 mb-5 rounded-lg bg-base-200 p-2 text-center">
       <div className="flex gap-2">
         <select
-          className="select"
+          className="select select-sm"
           onChange={(e) => {
             setSelected(
               ComponentType[e.target.value as keyof typeof ComponentType]
@@ -30,7 +30,7 @@ export const AddComponentBar = () => {
         </select>
         <button
           placeholder="Type here"
-          className={`btn ${selected ? "btn-success" : "btn-disabled"}`}
+          className={`btn-sm btn ${selected ? "btn-success" : "btn-disabled"}`}
           onClick={() => {
             if (selected && selectedDocument) {
               createComponent.mutate({
