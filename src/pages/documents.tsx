@@ -9,6 +9,7 @@ import { documentsAtom } from "~/atoms";
 import { useSession } from "next-auth/react";
 import { AddComponentBar } from "~/components/Document/AddComponentBar";
 import { CompontentsContainer } from "~/components/Document/Component/ComponentsContainer";
+import Head from "next/head";
 
 const Documents: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -23,19 +24,26 @@ const Documents: NextPage = () => {
   }, [data, refetch, setDocuments]);
 
   return (
-    <main className="m-5">
-      <div className="container mx-auto">
-        <Header />
-        <div className="mt-5 flex min-h-[85vh] flex-col gap-5 md:flex-row">
-          <Sidebar />
-          <div className="hero mt-0 flex flex-col">
-            <DocumentHeader />
-            <CompontentsContainer />
-            <AddComponentBar />
+    <>
+      <Head>
+        <title>InfoDocs - Your Documents</title>
+        <meta name="description" content="InfoDocs Your Documents" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className="m-5">
+        <div className="container mx-auto">
+          <Header />
+          <div className="mt-5 flex min-h-[85vh] flex-col gap-5 md:flex-row">
+            <Sidebar />
+            <div className="hero mt-0 flex flex-col">
+              <DocumentHeader />
+              <CompontentsContainer />
+              <AddComponentBar />
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 
