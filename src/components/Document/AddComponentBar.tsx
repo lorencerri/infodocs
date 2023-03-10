@@ -32,16 +32,18 @@ export const AddComponentBar = () => {
           placeholder="Type here"
           className={`btn-sm btn ${selected ? "btn-success" : "btn-disabled"}`}
           onClick={() => {
-            if (selected && selectedDocument) {
-              createComponent.mutate({
-                type: selected,
-                documentId: selectedDocument.id,
-                header: "Demo Component",
-                content: "Demo Content",
-              });
-              console.log(refetches);
-              if (refetches.components) refetches.components();
-            }
+            void (async () => {
+              if (selected && selectedDocument) {
+                await createComponent.mutateAsync({
+                  type: selected,
+                  documentId: selectedDocument.id,
+                  header: "Demo Component",
+                  content: "Demo Content",
+                });
+                console.log(refetches);
+                if (refetches.components) refetches.components();
+              }
+            })();
           }}
         >
           Add

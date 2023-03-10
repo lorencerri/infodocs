@@ -16,8 +16,9 @@ export const CompontentsContainer = () => {
   });
 
   useEffect(() => {
+    if (!refetch) return;
+    console.log(refetch);
     setRefetches((refetches) => ({ ...refetches, components: refetch }));
-    console.log("Refetching components");
   }, [setRefetches, refetch]);
 
   return (
