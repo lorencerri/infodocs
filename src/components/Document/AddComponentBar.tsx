@@ -2,12 +2,13 @@ import { ComponentType } from "@prisma/client";
 import { useState } from "react";
 import { api } from "~/utils/api";
 import { useAtom } from "jotai";
-import { selectedDocumentAtom } from "~/atoms";
+import { selectedDocumentAtom, refetchesAtom } from "~/atoms";
 
 export const AddComponentBar = () => {
   const [selected, setSelected] = useState<ComponentType | null>(null);
   const createComponent = api.component.create.useMutation();
   const [selectedDocument] = useAtom(selectedDocumentAtom);
+  const [refetches] = useAtom(refetchesAtom);
 
   if (!selectedDocument) return null;
   return (
@@ -38,6 +39,8 @@ export const AddComponentBar = () => {
                 header: "Demo Component",
                 content: "Demo Content",
               });
+              console.log(refetches);
+              if (refetches.components) refetches.components();
             }
           }}
         >

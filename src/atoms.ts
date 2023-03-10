@@ -15,6 +15,15 @@ interface componentsAtomInterface {
   refetch?: () => any;
 }
 
+type refetchesType = {
+  documents: (() => any) | null;
+  components: (() => any) | null;
+};
+
 export const selectedDocumentAtom = atom<DocumentType | null>(null);
 export const documentsAtom = atom<documentsAtomInterface>({ documents: [] });
 export const componentsAtom = atom<componentsAtomInterface>({ components: [] });
+export const refetchesAtom = atom<refetchesType>({
+  documents: null,
+  components: null,
+});
