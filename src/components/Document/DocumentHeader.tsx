@@ -14,12 +14,12 @@ export const DocumentHeader = () => {
   const deleteDocument = api.document.delete.useMutation();
   if (!selectedDocument) return <NoDocumentSelected />;
   return (
-    <div className="navbar min-h-16 mb-5 rounded-lg bg-base-200">
+    <div className="navbar min-h-8 mb-5 rounded-lg bg-base-200">
       <div className="w-full flex-1 flex-col gap-2 md:flex-row">
         <input
           type="text"
           placeholder="Title"
-          className="input input-md w-full max-w-xs"
+          className="input input-sm w-full max-w-xs"
           value={selectedDocument.title}
           onChange={(e) => {
             const document = documents.find(
@@ -35,7 +35,7 @@ export const DocumentHeader = () => {
         <input
           type="text"
           placeholder="Description"
-          className="input input-md w-full min-w-[45vw] max-w-xs"
+          className="input input-sm w-full min-w-[45vw] max-w-xs"
           value={selectedDocument.description || ""}
           onChange={(e) => {
             const document = documents.find(
@@ -53,7 +53,7 @@ export const DocumentHeader = () => {
           <a
             type="text"
             placeholder="Type here"
-            className={`btn ${edited ? "btn-success" : "btn-disabled"}`}
+            className={`btn-sm btn ${edited ? "btn-success" : "btn-disabled"}`}
             onClick={() => {
               editDocument.mutate({
                 id: selectedDocument.id,
@@ -69,7 +69,7 @@ export const DocumentHeader = () => {
           <a
             type="text"
             placeholder="Type here"
-            className={`btn btn-error`}
+            className={`btn-error btn-sm btn`}
             onClick={() => {
               const index = documents.findIndex(
                 (d) => d?.id === selectedDocument.id
