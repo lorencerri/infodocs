@@ -7,7 +7,7 @@ export const Header = () => {
   const { data: sessionData } = useSession();
 
   return (
-    <div className="navbar mt-5 rounded-lg bg-base-200">
+    <div className="navbar bg-base-200 xl:mt-5 xl:rounded-lg">
       <div className="flex-1">
         <Link href="/" className="btn-ghost btn text-xl normal-case">
           Info<span className="text-cyan-500">Docs</span>

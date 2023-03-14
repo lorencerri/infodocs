@@ -25,10 +25,18 @@ export const TextComponent = ({
       style={style}
       {...attributes}
       {...listeners}
-      className="min-h-16 mb-5 w-full rounded-lg bg-base-200 p-5 text-center"
+      className="min-h-16 relative mb-5 w-full rounded-lg bg-base-200 p-5 text-center"
     >
-      <h1 className="text-2xl">{header}</h1>
-      <p>{content}</p>
+      <kbd className="kbd absolute top-0 right-0 h-16 w-16">A</kbd>
+      <input
+        className="input-bordered input input-sm w-full"
+        type="text"
+        defaultValue={header || ""}
+      />
+      <textarea
+        className="textarea-bordered textarea mt-2 w-full"
+        defaultValue={content || ""}
+      ></textarea>
     </div>
   );
 };
