@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { api } from "~/utils/api";
+import CodeMirror from "@uiw/react-codemirror";
+import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { languages } from "@codemirror/language-data";
 
 export const TextComponent = ({
   header,
@@ -58,15 +61,19 @@ export const TextComponent = ({
           Delete
         </button>
       </div>
-      <textarea
-        className="textarea-bordered textarea mt-2 w-full"
-        value={contentText}
-        onChange={(e) => {
-          console.log(e.target.value);
-          setContentText(e.target.value);
+      <CodeMirror
+        extensions={[
+          markdown({ base: markdownLanguage, codeLanguages: languages }),
+        ]}
+        minHeight="10vh"
+        onChange={(value: string) => {
+          setContentText(value);
           setEdited(true);
         }}
-      ></textarea>
+        basicSetup={{ lineNumbers: false, foldGutter: false }}
+        theme="dark"
+        className="mt-2 w-full text-left"
+      />
     </div>
   );
 };
