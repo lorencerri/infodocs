@@ -37,8 +37,9 @@ export const AddComponentBar = () => {
                 await createComponent.mutateAsync({
                   type: selected,
                   documentId: selectedDocument.id,
-                  header: "Demo Component",
-                  content: "Demo Content",
+                  header: "Component Title",
+                  content:
+                    "## This is a text component.\n\n**It supports markdown formatting!**\n\nThis allows you to format text using special characters, including:\n1. **bold**\n2. *italic*\n3. lists.\netc.\n\n**Press preview to see what this looks like!**",
                 });
                 console.log(refetches);
                 if (refetches.components) refetches.components();
