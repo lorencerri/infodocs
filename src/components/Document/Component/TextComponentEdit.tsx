@@ -5,7 +5,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
 
-export const TextComponent = ({
+export const TextComponentEdit = ({
   header,
   content,
   id,
@@ -70,6 +70,7 @@ export const TextComponent = ({
           setContentText(value);
           setEdited(true);
         }}
+        value={contentText}
         basicSetup={{ lineNumbers: false, foldGutter: false }}
         theme="dark"
         className="mt-2 w-full text-left"

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Component, ComponentType } from "@prisma/client";
 import { api } from "~/utils/api";
 import { selectedDocumentAtom } from "~/atoms";
-import { TextComponent } from "./TextComponent";
+import { TextComponentEdit } from "./TextComponentEdit";
 import { useAtom } from "jotai";
 import { refetchesAtom } from "~/atoms";
 
@@ -37,7 +37,7 @@ export const CompontentsContainer = () => {
         switch (item.type) {
           case ComponentType.TEXT:
             return (
-              <TextComponent
+              <TextComponentEdit
                 key={item.id}
                 id={item.id}
                 header={item.header}
