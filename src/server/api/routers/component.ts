@@ -26,6 +26,9 @@ export const componentRouter = createTRPCRouter({
         where: {
           documentId: input.documentId,
         },
+        orderBy: {
+          createdAt: "asc",
+        },
       });
     }),
 
