@@ -16,6 +16,8 @@ export const DocumentHeader = () => {
   return (
     <div className="navbar min-h-8 mb-5 rounded-lg bg-base-200">
       <div className="w-full flex-1 flex-col gap-2 md:flex-row">
+        {/** TODO: Create link to guide document */}
+        <button className="btn-info btn-sm btn">Guide</button>
         <input
           type="text"
           placeholder="Title"
@@ -35,7 +37,7 @@ export const DocumentHeader = () => {
         <input
           type="text"
           placeholder="Description"
-          className="input input-sm w-full min-w-[45vw] max-w-xs"
+          className="input input-sm w-full min-w-[40vw] max-w-xs"
           value={selectedDocument.description || ""}
           onChange={(e) => {
             const document = documents.find(
