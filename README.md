@@ -10,3 +10,4 @@ Next Up:
 - [ ] Randomly display all documents on home page
 - [ ] Routing to display document by slug
 - [ ] Add search and filters to home page
+- [ ] Do GitHub issues
