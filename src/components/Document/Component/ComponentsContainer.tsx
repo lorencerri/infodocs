@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useEffect, useState } from "react";
-import { Component, ComponentType } from "@prisma/client";
+import { type Component, ComponentType } from "@prisma/client";
 import { api } from "~/utils/api";
 import { selectedDocumentAtom } from "~/atoms";
 import { TextComponentEdit } from "./TextComponentEdit";
