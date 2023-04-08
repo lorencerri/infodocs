@@ -9,6 +9,7 @@ import { selectedDocumentAtom } from "~/atoms";
 import { TextComponentEdit } from "./TextComponentEdit";
 import { useAtom } from "jotai";
 import { refetchesAtom } from "~/atoms";
+import { VideoComponentEdit } from "./VideoComponentEdit";
 
 export const CompontentsContainer = () => {
   const [selectedDocument] = useAtom(selectedDocumentAtom);
@@ -46,7 +47,15 @@ export const CompontentsContainer = () => {
               />
             );
           case ComponentType.VIDEO:
-            return <div>Video</div>;
+            return (
+              <VideoComponentEdit
+                key={item.id}
+                id={item.id}
+                header={item.header}
+                content={item.content}
+                refetch={refetch}
+              />
+            );
           default:
             return <div>Unknown</div>;
         }
