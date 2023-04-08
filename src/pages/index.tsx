@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 
 import { Header } from "~/components/Header/Header";
+import { Hero } from "~/components/Home/Hero";
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="container mx-auto">
         <Header />
+        <Hero />
       </div>
     </>
   );
