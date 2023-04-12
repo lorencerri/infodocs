@@ -1,4 +1,4 @@
-export const Hero = () => {
+export const DocumentsDisplay = () => {
   return (
     <div className="hero mt-3 bg-base-200 p-5 lg:mt-5 xl:rounded-lg">
       <div className="hero-content text-center">

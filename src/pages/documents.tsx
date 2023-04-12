@@ -26,8 +26,8 @@ const Documents: NextPage = () => {
   return (
     <>
       <Head>
-        <title>InfoDocs - Your Documents</title>
-        <meta name="description" content="InfoDocs Your Documents" />
+        <title>Techgenix - Your Documents</title>
+        <meta name="description" content="Techgenix Your Documents" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="m-5">

@@ -10,7 +10,7 @@ export const Header = () => {
     <div className="navbar bg-base-200 xl:mt-5 xl:rounded-lg">
       <div className="flex-1">
         <Link href="/" className="btn-ghost btn text-xl normal-case">
-          Info<span className="text-cyan-500">Docs</span>
+          Tech<span className="text-cyan-500">genix</span>
         </Link>
       </div>
       <div className="flex-none">
