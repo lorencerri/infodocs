@@ -18,7 +18,6 @@ export const AddComponentBar = () => {
             void (async () => {
               if (selectedDocument) {
                 await createComponent.mutateAsync({
-                  type: "TEXT",
                   documentId: selectedDocument.id,
                   header: "Component Title",
                   content:
