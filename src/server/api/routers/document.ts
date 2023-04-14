@@ -14,7 +14,7 @@ export const documentRouter = createTRPCRouter({
       })
     )
     .query(({ ctx, input }) => {
-      return ctx.prisma.document.findMany({
+      return ctx.prisma.document.findUnique({
         where: {
           id: input.id,
         },

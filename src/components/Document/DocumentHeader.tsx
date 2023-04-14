@@ -3,6 +3,7 @@ import { api } from "~/utils/api";
 import { NoDocumentSelected } from "./NoDocumentSelected";
 import { useAtom } from "jotai";
 import { documentsAtom, selectedDocumentAtom } from "~/atoms";
+import Link from "next/link";
 
 export const DocumentHeader = () => {
   const [edited, setEdited] = useState(false);
@@ -16,8 +17,9 @@ export const DocumentHeader = () => {
   return (
     <div className="navbar min-h-8 mb-5 rounded-lg bg-base-200">
       <div className="w-full flex-1 flex-col gap-2 md:flex-row">
-        {/** TODO: Create link to guide document */}
-        <button className="btn-info btn-sm btn">Guide</button>
+        <Link href={`/document/${selectedDocument.id}`}>
+          <button className="btn-info btn-sm btn">View</button>
+        </Link>
         <input
           type="text"
           placeholder="Title"

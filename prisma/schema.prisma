@@ -86,7 +86,7 @@ model Component {
     documentId Int
     type       ComponentType
     header     String?
-    content    String?
+    content    String?       @db.Text
 }
 
 enum ComponentType {
