@@ -31,7 +31,7 @@ const DocumentPage: NextPage = () => {
           <Header />
 
           {sessionData?.user.id === documentData?.userId && (
-            <div className="alert alert-info mt-3 shadow-lg lg:mt-5">
+            <div className="alert mt-3 border-2 border-solid border-cyan-500 bg-base-200 shadow-lg lg:mt-5">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -60,30 +60,43 @@ const DocumentPage: NextPage = () => {
           {!documentData ? (
             <h1>Sorry, not found.</h1>
           ) : (
-            <div className="hero mt-3 bg-base-200 p-5 lg:mt-5 xl:rounded-lg">
-              <div className="hero-content text-center">
-                <div className="max-w-md">
-                  <h1 className="text-xl font-bold lg:text-2xl">
-                    {documentData.title}
-                  </h1>
-                  <p className="pt-6">{documentData.description}</p>
+            <div className="alert mb-4 mt-3 bg-base-200 shadow-lg lg:mt-5">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="h-10 flex-shrink-0 stroke-cyan-500"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                  />
+                </svg>
+
+                <div>
+                  <h3 className="text-lg font-bold">{documentData.title}</h3>
+                  <div className="text-md">{documentData.description}</div>
                 </div>
               </div>
             </div>
           )}
           {componentData?.map((component) => (
             <div
+              className="alert mb-4 mt-3 bg-base-200 shadow-lg lg:mt-5"
               key={component.id}
-              className="hero mt-3 bg-base-200 p-5 lg:mt-5 xl:rounded-lg"
             >
-              <div className="hero-content">
-                <div className="max-w-md">
-                  <h1 className=" text-xl lg:text-2xl">{component.header}</h1>
-                  <article className="prose lg:prose-xl">
+              <div>
+                <div>
+                  <h3 className="text-lg font-bold">{component.header}</h3>
+                  <div className="prose">
                     {component.content && (
                       <ReactMarkdown>{component.content}</ReactMarkdown>
                     )}
-                  </article>
+                  </div>
                 </div>
               </div>
             </div>
