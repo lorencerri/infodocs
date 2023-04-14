@@ -79,17 +79,11 @@ model Document {
 }
 
 model Component {
-    id         String        @id @default(cuid())
-    createdAt  DateTime      @default(now())
-    updatedAt  DateTime      @updatedAt
-    document   Document      @relation(fields: [documentId], references: [id], onDelete: Cascade)
+    id         String   @id @default(cuid())
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
     documentId Int
-    type       ComponentType
     header     String?
-    content    String?       @db.Text
-}
-
-enum ComponentType {
-    TEXT
-    VIDEO
+    content    String?  @db.Text
 }
