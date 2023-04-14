@@ -43,6 +43,30 @@ export const DocumentsDisplay = () => {
                 </div>
               </Link>
             ))}
+            <Link href="/documents">
+              <div className="alert mb-4 bg-base-100 shadow-lg">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6 flex-shrink-0 stroke-success"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+
+                  <div>
+                    <h3 className="font-bold">Add Document</h3>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </p>
         </div>
       </div>
