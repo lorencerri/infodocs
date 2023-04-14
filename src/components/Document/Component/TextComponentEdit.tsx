@@ -40,7 +40,6 @@ export const TextComponentEdit = ({
           onClick={() => {
             editComponent.mutate({
               id,
-              type: "TEXT",
               header: headerText,
               content: contentText,
             });
