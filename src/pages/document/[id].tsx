@@ -86,13 +86,15 @@ const DocumentPage: NextPage = () => {
           )}
           {componentData?.map((component) => (
             <div
-              className="alert mb-4 mt-3 bg-base-200 shadow-lg lg:mt-5"
+              className="alert mb-4 mt-3 max-w-full bg-base-200 shadow-lg lg:mt-5"
               key={component.id}
             >
               <div>
                 <div>
-                  <h3 className="text-lg font-bold">{component.header}</h3>
-                  <div className="prose">
+                  <h3 className="max-w-full text-lg font-bold">
+                    {component.header}
+                  </h3>
+                  <div className="prose max-w-full">
                     {component.content && (
                       <ReactMarkdown>{component.content}</ReactMarkdown>
                     )}
