@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { atom } from "jotai";
 import { type RouterOutputs } from "./utils/api";
-import { Component } from "@prisma/client";
+import { type Component } from "@prisma/client";
 
 type DocumentType = RouterOutputs["document"]["getAll"][0] | null;
 
